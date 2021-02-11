@@ -26,28 +26,50 @@ jobs:
         run: npm run lint
       - name: build
         run: npm run build
-  #     - id: deploy
-  #       name: deploy
-  #       if: ${{ github.event_name == 'push' && contains(join(github.event.commits.*.message, ' '), '#skip') == false }}
-  #       uses: akhileshns/heroku-deploy@v3.10.9
-  #       with:
-  #         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-  #         heroku_app_name: "pokedex-app-fcole90"
-  #         heroku_email: ${{ secrets.HEROKU_EMAIL }}
-  #         remote_branch: master
-  #         healthcheck: "https://pokedex-app-fcole90.herokuapp.com/health"
-  #         checkstring: "OK"
-  #         rollbackonhealthcheckfailed: true
+  
+  backend_pipeline:
+    runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ./backend
 
-  # version_bumping:
-  #   needs: simple_deployment_pipeline
-  #   runs-on: ubuntu-18.04
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Bump version and push tag
-  #       if: ${{ github.event_name == 'push' }}
-  #       uses: anothrNick/github-tag-action@eca2b69f9e2c24be7decccd0f15fdb1ea5906598
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #         DEFAULT_BUMP: 'patch'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: npm install
+        run: npm install
+      - name: lint
+        run: npm run lint
+      - name: build
+        run: npm run build
+
+  deploy:
+    needs: [frontend_pipeline, backend_pipeline]
+    runs-on: ubuntu-18.04
+    steps:
+      - id: deploy
+        name: deploy
+        if: ${{ github.event_name == 'push' && contains(join(github.event.commits.*.message, ' '), '#skip') == false }}
+        uses: akhileshns/heroku-deploy@v3.10.9
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "patientor-fcole90"
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          healthcheck: "https://patientor-fcole90.herokuapp.com/api/ping"
+          checkstring: "pong"
+          rollbackonhealthcheckfailed: true
+
+  version_bumping:
+    needs: [frontend_pipeline, backend_pipeline]
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Bump version and push tag
+        if: ${{ github.event_name == 'push' }}
+        uses: anothrNick/github-tag-action@eca2b69f9e2c24be7decccd0f15fdb1ea5906598
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: 'patch'
 
