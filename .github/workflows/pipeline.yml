@@ -9,7 +9,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  simple_deployment_pipeline:
+  frontend_pipeline:
     runs-on: ubuntu-18.04
     defaults:
       run:
@@ -26,28 +26,28 @@ jobs:
         run: npm run lint
       - name: build
         run: npm run build
-      - id: deploy
-        name: deploy
-        if: ${{ github.event_name == 'push' && contains(join(github.event.commits.*.message, ' '), '#skip') == false }}
-        uses: akhileshns/heroku-deploy@v3.10.9
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: "pokedex-app-fcole90"
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          remote_branch: master
-          healthcheck: "https://pokedex-app-fcole90.herokuapp.com/health"
-          checkstring: "OK"
-          rollbackonhealthcheckfailed: true
+  #     - id: deploy
+  #       name: deploy
+  #       if: ${{ github.event_name == 'push' && contains(join(github.event.commits.*.message, ' '), '#skip') == false }}
+  #       uses: akhileshns/heroku-deploy@v3.10.9
+  #       with:
+  #         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+  #         heroku_app_name: "pokedex-app-fcole90"
+  #         heroku_email: ${{ secrets.HEROKU_EMAIL }}
+  #         remote_branch: master
+  #         healthcheck: "https://pokedex-app-fcole90.herokuapp.com/health"
+  #         checkstring: "OK"
+  #         rollbackonhealthcheckfailed: true
 
-  version_bumping:
-    needs: simple_deployment_pipeline
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: Bump version and push tag
-        if: ${{ github.event_name == 'push' }}
-        uses: anothrNick/github-tag-action@eca2b69f9e2c24be7decccd0f15fdb1ea5906598
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BUMP: 'patch'
+  # version_bumping:
+  #   needs: simple_deployment_pipeline
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Bump version and push tag
+  #       if: ${{ github.event_name == 'push' }}
+  #       uses: anothrNick/github-tag-action@eca2b69f9e2c24be7decccd0f15fdb1ea5906598
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         DEFAULT_BUMP: 'patch'
 
