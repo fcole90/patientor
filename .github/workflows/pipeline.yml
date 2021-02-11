@@ -1,4 +1,24 @@
-# name: test_frontend
+name: pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Say hello
+        run: |
+          echo "Hello World!"
+      - name: Now it is
+        run: |
+          echo date
+      - name: Directory content
+        run: |
+          echo ls -l
+
 
 # on:
 #   push:
