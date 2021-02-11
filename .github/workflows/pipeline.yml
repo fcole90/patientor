@@ -73,5 +73,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: 'patch'
-          INITIAL_VERSION: 0.1.0
+          RELEASE_BRANCHES: 'main'
 
