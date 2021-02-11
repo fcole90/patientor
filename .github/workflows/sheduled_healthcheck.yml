@@ -1,21 +1,18 @@
 on:
-  never
+  schedule:
+  # * is a special character in YAML so you have to quote this string
+  - cron:  '0 0 */15 * *'
 
-# on:
-#   schedule:
-#   # * is a special character in YAML so you have to quote this string
-#   - cron:  '*/30 * * * *'
-
-# jobs:
-#   healthcheck:
-#     runs-on: ubuntu-18.04
-#     steps:
-#     - name: Check the deployed service URL
-#       uses: jtalk/url-health-check-action@v1.4
-#       with:
-#         # Check the following URLs one by one sequentially
-#         url: https://pokedex-app-fcole90.herokuapp.com/health
-#         # Fail this action after this many failed attempts
-#         max-attempts: 3 # Optional, defaults to 1
-#         # Delay between retries
-#         retry-delay: 15s # Optional, only applicable to max-attempts > 1
+jobs:
+  healthcheck:
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Check the deployed service URL
+      uses: jtalk/url-health-check-action@v1.4
+      with:
+        # Check the following URLs one by one sequentially
+        url: https://patientor-fcole90.herokuapp.com/api/ping
+        # Fail this action after this many failed attempts
+        max-attempts: 3 # Optional, defaults to 1
+        # Delay between retries
+        retry-delay: 15s # Optional, only applicable to max-attempts > 1
