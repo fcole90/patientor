@@ -7,6 +7,7 @@ import patientRouter from './routes/patients';
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static('build'))
 
 const PORT = 3001;
 
