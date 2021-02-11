@@ -1,31 +1,31 @@
-name: test_frontend
+# name: test_frontend
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches: [master]
-    types: [opened, synchronize]
+# on:
+#   push:
+#     branches:
+#       - master
+#   pull_request:
+#     branches: [master]
+#     types: [opened, synchronize]
 
-jobs:
-  simple_deployment_pipeline:
-    runs-on: ubuntu-18.04
-    defaults:
-      run:
-        working-directory: ./frontend
+# jobs:
+#   simple_deployment_pipeline:
+#     runs-on: ubuntu-18.04
+#     defaults:
+#       run:
+#         working-directory: ./frontend
 
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: npm install
-        run: npm install
-      - name: lint
-        run: npm run lint
-      - name: build
-        run: npm run build
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: actions/setup-node@v1
+#         with:
+#           node-version: '12.x'
+#       - name: npm install
+#         run: npm install
+#       - name: lint
+#         run: npm run lint
+#       - name: build
+#         run: npm run build
       # - id: deploy
       #   name: deploy
       #   if: ${{ github.event_name == 'push' && contains(join(github.event.commits.*.message, ' '), '#skip') == false }}
