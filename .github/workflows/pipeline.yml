@@ -49,6 +49,7 @@ jobs:
     needs: [frontend_pipeline, backend_pipeline]
     runs-on: ubuntu-18.04
     steps:
+      - uses: actions/checkout@v2
       - id: deploy
         name: deploy
         if: ${{ github.event_name == 'push' && contains(join(github.event.commits.*.message, ' '), '#skip') == false }}
