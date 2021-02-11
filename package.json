@@ -2,9 +2,8 @@
   "name": "patientor-fcole90",
   "version": "0.1.0",
   "scripts": {
-    "frontend-install": "cd frontend  && npm install && npm build",
-    "backend-install": "cd backend  && npm install && npm build",
-    "front-to-back": "cp -rv ./frontend/build/* ./backend/build/",
-    "postinstall": "npm run frontend-install && npm run backend-install && npm run front-to-back"
+    "frontend-install": "cd frontend  && npm install && npm run build",
+    "backend-install": "cd backend && npm install && npm run build && npm run import-frontend",
+    "postinstall": "npm run frontend-install && npm run backend-install"
   }
 }
