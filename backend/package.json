@@ -1,0 +1,40 @@
+{
+  "name": "patientor-backend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "dev": "ts-node-dev src/index.ts",
+    "check": "ts-node-dev src/delete_me.ts",
+    "lint": "eslint --ext .ts .",
+    "lint-all": "eslint .",
+    "build": "npm run tsc",
+    "start": "node build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fcole90/fullstack_open_2020_part9.git"
+  },
+  "author": "Fabio Colella",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fcole90/fullstack_open_2020_part9/issues"
+  },
+  "homepage": "https://github.com/fcole90/fullstack_open_2020_part9#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.9",
+    "@types/express": "^4.17.11",
+    "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.19.0",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.3"
+  }
+}

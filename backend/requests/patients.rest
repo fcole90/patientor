@@ -1,0 +1,34 @@
+GET http://localhost:3001/api/patients
+
+###
+
+GET http://localhost:3001/api/patients/d2773336-f723-11e9-8f0b-362b9e155667
+
+###
+POST http://localhost:3001/api/patients
+content-type: application/json
+
+{
+  "name": "Miley Cyrus",
+  "dateOfBirth": "1992-11-23",
+  "ssn": "231192-432G",
+  "gender": "genderqueer",
+  "occupation": "Singer",
+  "entries": []
+}
+
+###
+
+POST http://localhost:3001/api/patients/d2773336-f723-11e9-8f0b-362b9e155667/entries
+content-type: application/json
+
+{
+  "type": "Hospital",
+  "description": "Was doing jogging and fell",
+  "date": "2021-04-12",
+  "specialist": "Johnny walker",
+  "discharge": {
+    "date": "2021-04-13",
+    "criteria": "Quickly recovered"
+  }
+}
