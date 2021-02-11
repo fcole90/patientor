@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('build'))
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3000;
 
 app.get('/api/ping', (_req, res) => {
   console.log('someone pinged here');
