@@ -2,7 +2,7 @@
   "name": "patientor-fcole90",
   "version": "0.1.0",
   "scripts": {
-    "frontend-install": "npm --prefix frontend install && cd frontend && npm --prefix . run build",
+    "frontend-install": "npm --prefix frontend install--only=dev && npm --prefix frontend install && cd frontend && npm --prefix . run build",
     "backend-install": "cd backend && npm install && npm run build && npm run import-frontend",
     "postinstall": "npm run frontend-install && npm run backend-install"
   }
