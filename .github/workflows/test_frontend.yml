@@ -1,3 +1,5 @@
+name: test_frontend
+
 on:
   push:
     branches:
