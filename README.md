@@ -1,7 +1,7 @@
 ![pipeline](https://github.com/fcole90/fullstack_open_2020_part11_own_CI/workflows/pipeline/badge.svg?branch=main) ![scheduled_healthcheck](https://github.com/fcole90/fullstack_open_2020_part11_own_CI/workflows/scheduled_healthcheck/badge.svg?branch=main&event=schedule)
 
 # Patientor
-Administration tool for patients' health records.
+Administration tool to manage patients' health records.
 
 Based on [Terverystalo](https://www.terveystalo.com/en/)'s [initial implementation](https://github.com/fullstack-hy2020/patientor), and has been developed according to the requirements of [Part 9 (Typescript)](https://fullstackopen.com/en/part9) and [Part 11 (CI/CD)](https://fullstackopen.com/en/part11) of [University of Helsinki's Full Stack Web Development course](https://fullstackopen.com/en/).
 
