@@ -3,7 +3,7 @@
 # Patientor
 Administration tool to manage patients' health records.
 
-Based on [Terverystalo](https://www.terveystalo.com/en/)'s [initial implementation](https://github.com/fullstack-hy2020/patientor), and has been developed according to the requirements of [Part 9 (Typescript)](https://fullstackopen.com/en/part9) and [Part 11 (CI/CD)](https://fullstackopen.com/en/part11) of [University of Helsinki's Full Stack Web Development course](https://fullstackopen.com/en/).
+Based on [Terverystalo](https://www.terveystalo.com/en/)'s [initial implementation](https://github.com/fullstack-hy2020/patientor), and developed according to the requirements of [Part 9 (Typescript)](https://fullstackopen.com/en/part9) and [Part 11 (CI/CD)](https://fullstackopen.com/en/part11) of [University of Helsinki's Full Stack Web Development course](https://fullstackopen.com/en/).
 
 <a href="https://patientor-fcole90.herokuapp.com/">
   <img 
